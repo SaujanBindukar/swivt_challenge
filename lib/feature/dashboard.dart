@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swivt_challenge/core/theme/app_colors.dart';
 import 'package:swivt_challenge/feature/downloads/download.dart';
-import 'package:swivt_challenge/feature/home/presentation/home.dart';
+import 'package:swivt_challenge/feature/home/presentation/pages/home.dart';
 import 'package:swivt_challenge/feature/search/search.dart';
 
 class DashboardScreen extends StatefulWidget {
