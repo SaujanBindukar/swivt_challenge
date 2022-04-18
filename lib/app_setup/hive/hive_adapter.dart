@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+// import 'package:hive/hive.dart';
 
 class HiveAdapter {
   /// Register all hive adapters inside this init function
