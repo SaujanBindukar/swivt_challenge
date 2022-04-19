@@ -21,7 +21,7 @@ class MovieResponse with _$MovieResponse {
 class Movies with _$Movies {
   const factory Movies({
     required bool adult,
-    @JsonKey(name: 'backdrop_path') required String backdropPath,
+    @JsonKey(name: 'backdrop_path') String? backdropPath,
     required int id,
     @JsonKey(name: 'original_language') required String originalLanguage,
     @JsonKey(name: 'original_title') required String originalTitle,

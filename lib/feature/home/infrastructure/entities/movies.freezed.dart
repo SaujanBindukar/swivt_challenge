@@ -258,7 +258,7 @@ class _$MoviesTearOff {
 
   _Movies call(
       {required bool adult,
-      @JsonKey(name: 'backdrop_path') required String backdropPath,
+      @JsonKey(name: 'backdrop_path') String? backdropPath,
       required int id,
       @JsonKey(name: 'original_language') required String originalLanguage,
       @JsonKey(name: 'original_title') required String originalTitle,
@@ -303,7 +303,7 @@ const $Movies = _$MoviesTearOff();
 mixin _$Movies {
   bool get adult => throw _privateConstructorUsedError;
   @JsonKey(name: 'backdrop_path')
-  String get backdropPath => throw _privateConstructorUsedError;
+  String? get backdropPath => throw _privateConstructorUsedError;
   int get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'original_language')
   String get originalLanguage => throw _privateConstructorUsedError;
@@ -335,7 +335,7 @@ abstract class $MoviesCopyWith<$Res> {
       _$MoviesCopyWithImpl<$Res>;
   $Res call(
       {bool adult,
-      @JsonKey(name: 'backdrop_path') String backdropPath,
+      @JsonKey(name: 'backdrop_path') String? backdropPath,
       int id,
       @JsonKey(name: 'original_language') String originalLanguage,
       @JsonKey(name: 'original_title') String originalTitle,
@@ -385,7 +385,7 @@ class _$MoviesCopyWithImpl<$Res> implements $MoviesCopyWith<$Res> {
       backdropPath: backdropPath == freezed
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -449,7 +449,7 @@ abstract class _$MoviesCopyWith<$Res> implements $MoviesCopyWith<$Res> {
   @override
   $Res call(
       {bool adult,
-      @JsonKey(name: 'backdrop_path') String backdropPath,
+      @JsonKey(name: 'backdrop_path') String? backdropPath,
       int id,
       @JsonKey(name: 'original_language') String originalLanguage,
       @JsonKey(name: 'original_title') String originalTitle,
@@ -500,7 +500,7 @@ class __$MoviesCopyWithImpl<$Res> extends _$MoviesCopyWithImpl<$Res>
       backdropPath: backdropPath == freezed
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -562,7 +562,7 @@ class __$MoviesCopyWithImpl<$Res> extends _$MoviesCopyWithImpl<$Res>
 class _$_Movies implements _Movies {
   const _$_Movies(
       {required this.adult,
-      @JsonKey(name: 'backdrop_path') required this.backdropPath,
+      @JsonKey(name: 'backdrop_path') this.backdropPath,
       required this.id,
       @JsonKey(name: 'original_language') required this.originalLanguage,
       @JsonKey(name: 'original_title') required this.originalTitle,
@@ -584,7 +584,7 @@ class _$_Movies implements _Movies {
   final bool adult;
   @override
   @JsonKey(name: 'backdrop_path')
-  final String backdropPath;
+  final String? backdropPath;
   @override
   final int id;
   @override
@@ -686,7 +686,7 @@ class _$_Movies implements _Movies {
 abstract class _Movies implements Movies {
   const factory _Movies(
       {required bool adult,
-      @JsonKey(name: 'backdrop_path') required String backdropPath,
+      @JsonKey(name: 'backdrop_path') String? backdropPath,
       required int id,
       @JsonKey(name: 'original_language') required String originalLanguage,
       @JsonKey(name: 'original_title') required String originalTitle,
@@ -707,7 +707,7 @@ abstract class _Movies implements Movies {
   bool get adult;
   @override
   @JsonKey(name: 'backdrop_path')
-  String get backdropPath;
+  String? get backdropPath;
   @override
   int get id;
   @override

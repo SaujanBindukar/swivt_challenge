@@ -19,6 +19,16 @@ class GenreLoaded extends GenreState {
   List<Object> get props => [genreResponse];
 }
 
+// class MovieByGenreLoaded extends GenreState {
+//   const MovieByGenreLoaded({required this.movieResponse});
+
+//   final MovieResponse movieResponse;
+//   @override
+//   List<Object> get props => [movieResponse];
+// }
+
+// class MovieByGenreLoading extends GenreState {}
+
 class GenreLoading extends GenreState {}
 
 class GenreError extends GenreState {}

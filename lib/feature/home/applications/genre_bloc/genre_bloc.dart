@@ -24,6 +24,19 @@ class GenreBloc extends Bloc<GenreEvent, GenreState> {
         );
       },
     );
+    // on<GetMovieByGenre>((event, emit) async {
+    //   emit(GenreLoading());
+    //   final response =
+    //       await homeRepository.getMoviesByGenre(genreId: event.genreId);
+    //   response.fold(
+    //     (moviesResponse) {
+    //       emit(MovieByGenreLoaded(movieResponse: moviesResponse));
+    //     },
+    //     (failure) {
+    //       emit(GenreError());
+    //     },
+    //   );
+    // });
   }
   final HomeRepository homeRepository;
 }

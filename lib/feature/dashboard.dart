@@ -17,8 +17,12 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   @override
   void initState() {
+    //fetch popular movies
     inject<MoviesBloc>().add(const GetPopularMovies());
+
+    //fetch genre list
     inject<GenreBloc>().add(GetGenreList());
+
     super.initState();
   }
 

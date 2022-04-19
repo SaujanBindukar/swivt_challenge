@@ -7,8 +7,8 @@ import 'package:swivt_challenge/app_setup/dio/interceptors/response_interceptors
 Dio dioClient() {
   final _dio = Dio();
   final options = BaseOptions(
-    connectTimeout: 5000,
-    receiveTimeout: 5000,
+    connectTimeout: 30000, //30 sec
+    receiveTimeout: 30000,
     baseUrl: 'https://api.themoviedb.org/3/',
     queryParameters: {
       'api_key': '8b64a757db3ca10e01db9a717db9b331',

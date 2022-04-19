@@ -5,6 +5,7 @@ import 'package:swivt_challenge/core/components/custom_shimmer.dart';
 import 'package:swivt_challenge/core/theme/app_colors.dart';
 import 'package:swivt_challenge/feature/home/applications/genre_bloc/genre_bloc.dart';
 import 'package:swivt_challenge/feature/home/infrastructure/entities/genre.dart';
+import 'package:swivt_challenge/feature/home/presentation/pages/genre/genre_movies.dart';
 
 class GenreList extends StatefulWidget {
   const GenreList({Key? key}) : super(key: key);
@@ -100,22 +101,35 @@ class _GenreChips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: const EdgeInsets.symmetric(horizontal: 8),
-        padding: const EdgeInsets.symmetric(
-          horizontal: 8,
-        ),
-        decoration: BoxDecoration(
-          color: AppColors.transparentColor,
-          borderRadius: BorderRadius.circular(4),
-        ),
-        child: Center(
-          child: Text(
-            genreData?.name ?? '',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.white,
-                ),
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => GenreMoviesScreen(
+              genreId: genreData!.id,
+              genreName: genreData!.name,
+            ),
           ),
-        ));
+        );
+      },
+      child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 8,
+          ),
+          decoration: BoxDecoration(
+            color: AppColors.transparentColor,
+            borderRadius: BorderRadius.circular(4),
+          ),
+          child: Center(
+            child: Text(
+              genreData?.name ?? '',
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.white,
+                  ),
+            ),
+          )),
+    );
   }
 }

@@ -6,6 +6,11 @@ import 'package:swivt_challenge/feature/home/infrastructure/entities/movies.dart
 
 abstract class IHomeRepository {
   Future<Either<GenreResponse, dynamic>> getGenre();
+
+  Future<Either<MovieResponse, dynamic>> getMoviesByGenre({
+    required int genreId,
+    int? page,
+  });
   Future<Either<MovieResponse, dynamic>> getPopularMovies({
     int? page,
   });
@@ -38,6 +43,28 @@ class HomeRepository implements IHomeRepository {
       };
       final response = await dio.get<Map<String, dynamic>>(
         MoviesEp.getPopularMovies,
+        queryParameters: query,
+      );
+      final json = Map<String, dynamic>.from(response.data!);
+      final result = MovieResponse.fromJson(json);
+      return Left(result);
+    } on DioError catch (e) {
+      return Right(e);
+    } catch (e) {
+      return Right(e);
+    }
+  }
+
+  @override
+  Future<Either<MovieResponse, dynamic>> getMoviesByGenre(
+      {required int genreId, int? page}) async {
+    try {
+      final query = {
+        'page': page ?? 1,
+        'with_genres': genreId,
+      };
+      final response = await dio.get<Map<String, dynamic>>(
+        GenreEp.getMovieByGenre,
         queryParameters: query,
       );
       final json = Map<String, dynamic>.from(response.data!);

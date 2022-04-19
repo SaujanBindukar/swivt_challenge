@@ -27,7 +27,7 @@ Map<String, dynamic> _$$_MovieResponseToJson(_$_MovieResponse instance) =>
 
 _$_Movies _$$_MoviesFromJson(Map<String, dynamic> json) => _$_Movies(
       adult: json['adult'] as bool,
-      backdropPath: json['backdrop_path'] as String,
+      backdropPath: json['backdrop_path'] as String?,
       id: json['id'] as int,
       originalLanguage: json['original_language'] as String,
       originalTitle: json['original_title'] as String,

@@ -7,8 +7,8 @@ import 'package:swivt_challenge/core/extensions/image_extension.dart';
 import 'package:swivt_challenge/core/theme/app_colors.dart';
 import 'package:swivt_challenge/feature/home/applications/movies_bloc/movies_bloc.dart';
 import 'package:swivt_challenge/feature/home/infrastructure/entities/movies.dart';
-import 'package:swivt_challenge/feature/home/presentation/pages/popular_movies/all_movies.dart';
-import 'package:swivt_challenge/feature/home/presentation/pages/popular_movies/movie_details.dart';
+import 'package:swivt_challenge/feature/home/presentation/pages/movies/all_movies.dart';
+import 'package:swivt_challenge/feature/home/presentation/pages/movies/movie_details.dart';
 
 class PopularMoviesList extends StatefulWidget {
   const PopularMoviesList({Key? key}) : super(key: key);

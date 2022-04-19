@@ -8,3 +8,9 @@ abstract class GenreEvent extends Equatable {
 }
 
 class GetGenreList extends GenreEvent {}
+
+class GetMovieByGenre extends GenreEvent {
+  const GetMovieByGenre({required this.genreId});
+
+  final int genreId;
+}

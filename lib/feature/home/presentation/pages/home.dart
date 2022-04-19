@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swivt_challenge/core/theme/app_colors.dart';
 import 'package:swivt_challenge/feature/home/presentation/pages/genre/genre_list.dart';
-import 'package:swivt_challenge/feature/home/presentation/pages/popular_movies/popular_movies.dart';
+import 'package:swivt_challenge/feature/home/presentation/pages/movies/popular_movies.dart';
 import 'package:swivt_challenge/feature/home/presentation/widgets/home_header.dart';
 
 class HomeScreen extends StatefulWidget {
