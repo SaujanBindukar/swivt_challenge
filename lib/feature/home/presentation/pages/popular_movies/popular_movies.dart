@@ -32,7 +32,6 @@ class _PopularMoviesListState extends State<PopularMoviesList> {
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'Popular Movies',
@@ -45,7 +44,7 @@ class _PopularMoviesListState extends State<PopularMoviesList> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => AllMoviesScreen(
+                            builder: (context) => const AllMoviesScreen(
                               appbarTitle: 'Popular Movies',
                             ),
                           ),
@@ -92,18 +91,15 @@ class _PopularMoviesListState extends State<PopularMoviesList> {
               if (state is MoviesLoaded)
                 SizedBox(
                   height: 200,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 0),
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        final movieData = data?.results[index];
-                        return MovieTile(
-                          movies: movieData!,
-                        );
-                      },
-                    ),
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      final movieData = data?.results[index];
+                      return MovieTile(
+                        movies: movieData!,
+                      );
+                    },
                   ),
                 ),
               if (state is MoviesError)
@@ -114,7 +110,7 @@ class _PopularMoviesListState extends State<PopularMoviesList> {
                       ),
                 )
               else
-                SizedBox()
+                const SizedBox()
             ],
           );
         },
@@ -143,7 +139,7 @@ class MovieTile extends StatelessWidget {
         );
       },
       child: Container(
-        padding: EdgeInsets.only(left: 20),
+        padding: const EdgeInsets.only(left: 20),
         height: 200,
         width: 180,
         child: Column(

@@ -7,7 +7,6 @@ part 'genre_event.dart';
 part 'genre_state.dart';
 
 class GenreBloc extends Bloc<GenreEvent, GenreState> {
-  final HomeRepository homeRepository;
   GenreBloc({
     required this.homeRepository,
   }) : super(GenreInitial()) {
@@ -26,4 +25,5 @@ class GenreBloc extends Bloc<GenreEvent, GenreState> {
       },
     );
   }
+  final HomeRepository homeRepository;
 }

@@ -42,20 +42,19 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    padding: EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                         color: Colors.orange,
                         borderRadius: BorderRadius.circular(50)),
                     child: Row(
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.play_arrow,
                           color: Colors.white,
                         ),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         Text(
                           'Play',
                           style: Theme.of(context).textTheme.button?.copyWith(
@@ -66,10 +65,10 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                       ],
                     ),
                   ),
-                  CircularButton(
+                  const CircularButton(
                     iconData: Icons.file_download_outlined,
                   ),
-                  CircularButton(
+                  const CircularButton(
                     iconData: Icons.ios_share,
                     iconColor: AppColors.secondaryColor,
                   ),
@@ -87,7 +86,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                           color: Colors.white,
                         ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     widget.movies.overview,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(

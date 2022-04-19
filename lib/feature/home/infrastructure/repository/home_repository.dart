@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:swivt_challenge/app_setup/app_endpoints/app_endpoints.dart';
-import 'package:swivt_challenge/app_setup/dio/dio_client.dart';
 import 'package:swivt_challenge/feature/home/infrastructure/entities/genre.dart';
 import 'package:swivt_challenge/feature/home/infrastructure/entities/movies.dart';
 

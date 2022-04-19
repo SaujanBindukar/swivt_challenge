@@ -7,17 +7,29 @@ part 'movies_event.dart';
 part 'movies_state.dart';
 
 class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
-  final HomeRepository homeRepository;
   MoviesBloc({
     required this.homeRepository,
   }) : super(MoviesInitial()) {
     on<GetPopularMovies>(
       (event, emit) async {
-        emit(MoviesLoading());
+        if (event.page == null) {
+          emit(MoviesLoading());
+        }
 
-        final response = await homeRepository.getPopularMovies();
+        final response =
+            await homeRepository.getPopularMovies(page: event.page);
         response.fold((moviesReponse) {
-          emit(MoviesLoaded(movieResponse: moviesReponse));
+          final oldData = event.oldMovieResponse?.results ?? [];
+          final newMoviesList = moviesReponse.results;
+          final newData = oldData + newMoviesList;
+          emit(MoviesLoaded(
+            movieResponse: event.page == null
+                ? moviesReponse
+                : event.oldMovieResponse!.copyWith(
+                    results: newData,
+                    page: moviesReponse.page,
+                  ),
+          ));
         }, (failure) {
           emit(MoviesError());
         });
@@ -27,4 +39,5 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
       (event, emit) {},
     );
   }
+  final HomeRepository homeRepository;
 }

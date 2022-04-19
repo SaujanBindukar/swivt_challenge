@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swivt_challenge/app_setup/dependency_injection.dart';
 import 'package:swivt_challenge/core/theme/app_colors.dart';
 import 'package:swivt_challenge/feature/downloads/download.dart';
@@ -18,7 +17,7 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   @override
   void initState() {
-    inject<MoviesBloc>().add(GetPopularMovies());
+    inject<MoviesBloc>().add(const GetPopularMovies());
     inject<GenreBloc>().add(GetGenreList());
     super.initState();
   }
@@ -39,11 +38,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
         type: BottomNavigationBarType.fixed,
         selectedItemColor: AppColors.secondaryColor,
         unselectedItemColor: Colors.white,
-        onTap: ((value) {
+        onTap: (value) {
           setState(() {
             currentIndex = value;
           });
-        }),
+        },
         items: const [
           BottomNavigationBarItem(
             label: '',

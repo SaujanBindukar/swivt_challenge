@@ -1,3 +1,4 @@
+include: package:very_good_analysis/analysis_options.yaml
 analyzer:
   exclude:
     - "**/*.g.dart"
@@ -22,16 +23,10 @@ analyzer:
     missing_return: error
     public_member_api_docs: ignore
     lines_longer_than_80_chars: ignore
-    cascade_invocations: ignore
-    prefer_if_elements_to_conditional_expressions: ignore
-    avoid_redundant_argument_values: ignore
+
     require_trailing_commas: ignore
     invalid_annotation_target: ignore
     sort_pub_dependencies: ignore
-    prefer_asserts_with_message: ignore
-    use_build_context_synchronously: ignore
-    avoid_dynamic_calls: ignore
-    omit_local_variable_types: ignore
 
 linter:
   rules:

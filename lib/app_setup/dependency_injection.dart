@@ -7,27 +7,32 @@ import 'package:swivt_challenge/feature/home/infrastructure/repository/home_repo
 GetIt inject = GetIt.instance;
 
 void initDependencyInjection() {
-  //dio register
-  inject.registerSingleton(dioClient());
+  registerClient();
 
   registerRepository();
+
   registerBloc();
 }
 
+//register the network client
+void registerClient() {
+  inject.registerSingleton(dioClient());
+}
+
+//register all the repository
 void registerRepository() {
   inject.registerLazySingleton(
-    () => HomeRepository(
-      dio: inject(),
-    ),
+    () => HomeRepository(dio: inject()),
   );
 }
 
+//register all the blocs
 void registerBloc() {
-  inject.registerLazySingleton(
-    () => MoviesBloc(homeRepository: inject()),
-  );
-
-  inject.registerLazySingleton(() => GenreBloc(
-        homeRepository: inject(),
-      ));
+  inject
+    ..registerLazySingleton(
+      () => MoviesBloc(homeRepository: inject()),
+    )
+    ..registerLazySingleton(
+      () => GenreBloc(homeRepository: inject()),
+    );
 }

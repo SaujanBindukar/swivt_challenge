@@ -12,9 +12,8 @@ class MoviesInitial extends MoviesState {}
 class MoviesLoading extends MoviesState {}
 
 class MoviesLoaded extends MoviesState {
+  const MoviesLoaded({required this.movieResponse});
   final MovieResponse movieResponse;
-
-  MoviesLoaded({required this.movieResponse});
 
   @override
   List<Object> get props => [movieResponse];

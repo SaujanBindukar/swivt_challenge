@@ -10,11 +10,10 @@ abstract class GenreState extends Equatable {
 class GenreInitial extends GenreState {}
 
 class GenreLoaded extends GenreState {
-  final GenreResponse genreResponse;
-
   const GenreLoaded({
     required this.genreResponse,
   });
+  final GenreResponse genreResponse;
 
   @override
   List<Object> get props => [genreResponse];
