@@ -6,8 +6,6 @@ part 'trending_state.dart';
 
 class TrendingBloc extends Bloc<TrendingEvent, TrendingState> {
   TrendingBloc() : super(TrendingInitial()) {
-    on<TrendingEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<TrendingEvent>((event, emit) {});
   }
 }
