@@ -6,3 +6,12 @@ abstract class TrendingEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class GetTrendingMovies extends TrendingEvent {
+  const GetTrendingMovies({
+    this.page,
+    this.oldMovieResponse,
+  });
+  final int? page;
+  final MovieResponse? oldMovieResponse;
+}

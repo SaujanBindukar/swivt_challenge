@@ -14,6 +14,9 @@ abstract class IHomeRepository {
   Future<Either<MovieResponse, dynamic>> getPopularMovies({
     int? page,
   });
+  Future<Either<MovieResponse, dynamic>> getTrendingMovies({
+    int? page,
+  });
 }
 
 class HomeRepository implements IHomeRepository {
@@ -65,6 +68,26 @@ class HomeRepository implements IHomeRepository {
       };
       final response = await dio.get<Map<String, dynamic>>(
         GenreEp.getMovieByGenre,
+        queryParameters: query,
+      );
+      final json = Map<String, dynamic>.from(response.data!);
+      final result = MovieResponse.fromJson(json);
+      return Left(result);
+    } on DioError catch (e) {
+      return Right(e);
+    } catch (e) {
+      return Right(e);
+    }
+  }
+
+  @override
+  Future<Either<MovieResponse, dynamic>> getTrendingMovies({int? page}) async {
+    try {
+      final query = {
+        'page': page ?? 1,
+      };
+      final response = await dio.get<Map<String, dynamic>>(
+        MoviesEp.getPopularMovies,
         queryParameters: query,
       );
       final json = Map<String, dynamic>.from(response.data!);

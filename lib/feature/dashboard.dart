@@ -4,6 +4,7 @@ import 'package:swivt_challenge/core/theme/app_colors.dart';
 import 'package:swivt_challenge/feature/downloads/download.dart';
 import 'package:swivt_challenge/feature/home/applications/genre_bloc/genre_bloc.dart';
 import 'package:swivt_challenge/feature/home/applications/movies_bloc/movies_bloc.dart';
+import 'package:swivt_challenge/feature/home/applications/trending_bloc/trending_bloc.dart';
 import 'package:swivt_challenge/feature/home/presentation/pages/home.dart';
 import 'package:swivt_challenge/feature/search/search.dart';
 
@@ -23,6 +24,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
     //fetch genre list
     inject<GenreBloc>().add(GetGenreList());
 
+    ///fetch trending movies
+    inject<TrendingBloc>().add(const GetTrendingMovies());
+
     super.initState();
   }
 
@@ -32,6 +36,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     DownloadScreen(),
     SearchScreen(),
   ];
+
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
