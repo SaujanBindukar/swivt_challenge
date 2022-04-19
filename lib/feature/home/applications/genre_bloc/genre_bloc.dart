@@ -7,8 +7,10 @@ part 'genre_event.dart';
 part 'genre_state.dart';
 
 class GenreBloc extends Bloc<GenreEvent, GenreState> {
-  final homeRepository = HomeRepository();
-  GenreBloc() : super(GenreInitial()) {
+  final HomeRepository homeRepository;
+  GenreBloc({
+    required this.homeRepository,
+  }) : super(GenreInitial()) {
     on<GetGenreList>(
       (event, emit) async {
         emit(GenreLoading());

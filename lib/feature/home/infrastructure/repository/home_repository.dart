@@ -13,11 +13,12 @@ abstract class IHomeRepository {
 }
 
 class HomeRepository implements IHomeRepository {
-  final _dio = dioClient();
+  HomeRepository({required this.dio});
+  final Dio dio;
   @override
   Future<Either<GenreResponse, dynamic>> getGenre() async {
     try {
-      final response = await _dio.get<Map<String, dynamic>>(
+      final response = await dio.get<Map<String, dynamic>>(
         GenreEp.getGenre,
       );
       final json = Map<String, dynamic>.from(response.data!);
@@ -36,7 +37,7 @@ class HomeRepository implements IHomeRepository {
       final query = {
         'page': page ?? 1,
       };
-      final response = await _dio.get<Map<String, dynamic>>(
+      final response = await dio.get<Map<String, dynamic>>(
         MoviesEp.getPopularMovies,
         queryParameters: query,
       );

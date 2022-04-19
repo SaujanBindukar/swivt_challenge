@@ -7,11 +7,14 @@ part 'movies_event.dart';
 part 'movies_state.dart';
 
 class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
-  final homeRepository = HomeRepository();
-  MoviesBloc() : super(MoviesInitial()) {
+  final HomeRepository homeRepository;
+  MoviesBloc({
+    required this.homeRepository,
+  }) : super(MoviesInitial()) {
     on<GetPopularMovies>(
       (event, emit) async {
         emit(MoviesLoading());
+
         final response = await homeRepository.getPopularMovies();
         response.fold((moviesReponse) {
           emit(MoviesLoaded(movieResponse: moviesReponse));

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:swivt_challenge/app_setup/dependency_injection.dart';
 import 'package:swivt_challenge/core/components/custom_shimmer.dart';
 import 'package:swivt_challenge/core/theme/app_colors.dart';
 import 'package:swivt_challenge/feature/home/applications/genre_bloc/genre_bloc.dart';
@@ -15,41 +16,39 @@ class GenreList extends StatefulWidget {
 class _GenreListState extends State<GenreList> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => GenreBloc()..add(GetGenreList()),
-      child: BlocBuilder<GenreBloc, GenreState>(
-        builder: (context, state) {
-          if (state is GenreLoading) {
-            return const _GenreLoadingState();
-          }
-          if (state is GenreLoaded) {
-            final data = state.genreResponse;
-            return SizedBox(
-              height: 50,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: data.genres?.length,
-                  itemBuilder: (context, index) {
-                    final genreData = data.genres?[index];
-                    return _GenreChips(genreData: genreData);
-                  },
-                ),
+    return BlocBuilder<GenreBloc, GenreState>(
+      bloc: inject<GenreBloc>(),
+      builder: (context, state) {
+        if (state is GenreLoading) {
+          return const _GenreLoadingState();
+        }
+        if (state is GenreLoaded) {
+          final data = state.genreResponse;
+          return SizedBox(
+            height: 50,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: data.genres?.length,
+                itemBuilder: (context, index) {
+                  final genreData = data.genres?[index];
+                  return _GenreChips(genreData: genreData);
+                },
               ),
-            );
-          }
-          if (state is GenreError) {
-            return Text(
-              'Unable to fetch',
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color: Colors.white,
-                  ),
-            );
-          }
-          return const SizedBox();
-        },
-      ),
+            ),
+          );
+        }
+        if (state is GenreError) {
+          return Text(
+            'Unable to fetch',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Colors.white,
+                ),
+          );
+        }
+        return const SizedBox();
+      },
     );
   }
 }

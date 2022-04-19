@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:swivt_challenge/app_setup/dependency_injection.dart';
 import 'package:swivt_challenge/core/theme/app_colors.dart';
 import 'package:swivt_challenge/feature/downloads/download.dart';
+import 'package:swivt_challenge/feature/home/applications/genre_bloc/genre_bloc.dart';
+import 'package:swivt_challenge/feature/home/applications/movies_bloc/movies_bloc.dart';
 import 'package:swivt_challenge/feature/home/presentation/pages/home.dart';
 import 'package:swivt_challenge/feature/search/search.dart';
 
@@ -12,6 +16,13 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  @override
+  void initState() {
+    inject<MoviesBloc>().add(GetPopularMovies());
+    inject<GenreBloc>().add(GetGenreList());
+    super.initState();
+  }
+
   final pageList = const [
     HomeScreen(),
     SearchScreen(),

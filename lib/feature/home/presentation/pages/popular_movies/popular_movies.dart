@@ -1,8 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:swivt_challenge/app_setup/dependency_injection.dart';
+import 'package:swivt_challenge/core/components/custom_shimmer.dart';
+import 'package:swivt_challenge/core/extensions/image_extension.dart';
+import 'package:swivt_challenge/core/theme/app_colors.dart';
 import 'package:swivt_challenge/feature/home/applications/movies_bloc/movies_bloc.dart';
 import 'package:swivt_challenge/feature/home/infrastructure/entities/movies.dart';
+import 'package:swivt_challenge/feature/home/presentation/pages/popular_movies/all_movies.dart';
+import 'package:swivt_challenge/feature/home/presentation/pages/popular_movies/movie_details.dart';
 
 class PopularMoviesList extends StatefulWidget {
   const PopularMoviesList({Key? key}) : super(key: key);
@@ -15,50 +21,103 @@ class _PopularMoviesListState extends State<PopularMoviesList> {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        child: Text(
-          'Popular Movies',
-          style: Theme.of(context).textTheme.headline6?.copyWith(
-                color: Colors.white,
+      BlocBuilder<MoviesBloc, MoviesState>(
+        bloc: inject<MoviesBloc>(),
+        builder: (context, state) {
+          final data = state is MoviesLoaded ? state.movieResponse : null;
+          return Column(
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Popular Movies',
+                      style: Theme.of(context).textTheme.headline6?.copyWith(
+                            color: Colors.white,
+                          ),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AllMoviesScreen(
+                              appbarTitle: 'Popular Movies',
+                            ),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'See All',
+                        style: Theme.of(context).textTheme.button?.copyWith(
+                              color: Colors.white,
+                            ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-        ),
-      ),
-      BlocProvider(
-        create: (context) => MoviesBloc()..add(GetPopularMovies()),
-        child: BlocBuilder<MoviesBloc, MoviesState>(
-          builder: (context, state) {
-            if (state is MoviesLoading) {
-              return CircularProgressIndicator();
-            }
-            if (state is MoviesLoaded) {
-              final data = state.movieResponse;
-              return SizedBox(
-                height: 200,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 0),
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      final genreData = data.results[index];
-                      return MovieTile(genreData: genreData);
-                    },
+              if (state is MoviesLoading)
+                SizedBox(
+                  height: 200,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: ListView.builder(
+                        itemCount: 5,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return CustomShimmer(
+                            baseColor: AppColors.transparentColor,
+                            highlightColor: Colors.grey.shade100,
+                            widget: Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 8),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                              ),
+                              height: 160,
+                              width: 180,
+                              decoration: BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                            ),
+                          );
+                        }),
                   ),
                 ),
-              );
-            }
-            if (state is MoviesError) {
-              return Text(
-                'Unable to fetch',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: Colors.white,
+              if (state is MoviesLoaded)
+                SizedBox(
+                  height: 200,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 0),
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 10,
+                      itemBuilder: (context, index) {
+                        final movieData = data?.results[index];
+                        return MovieTile(
+                          movies: movieData!,
+                        );
+                      },
                     ),
-              );
-            }
-            return const SizedBox();
-          },
-        ),
+                  ),
+                ),
+              if (state is MoviesError)
+                Text(
+                  'Unable to fetch',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Colors.white,
+                      ),
+                )
+              else
+                SizedBox()
+            ],
+          );
+        },
       )
     ]);
   }
@@ -67,41 +126,50 @@ class _PopularMoviesListState extends State<PopularMoviesList> {
 class MovieTile extends StatelessWidget {
   const MovieTile({
     Key? key,
-    required this.genreData,
+    required this.movies,
   }) : super(key: key);
 
-  final Movies genreData;
+  final Movies movies;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(left: 20),
-      height: 200,
-      width: 180,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 160,
-            width: 180,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: CachedNetworkImageProvider(
-                      'https://image.tmdb.org/t/p/original' +
-                          genreData.posterPath,
-                    ))),
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MovieDetailScreen(movies: movies),
           ),
-          Text(
-            genreData.originalTitle,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Colors.white,
-                ),
-            textAlign: TextAlign.start,
-            maxLines: 1,
-          )
-        ],
+        );
+      },
+      child: Container(
+        padding: EdgeInsets.only(left: 20),
+        height: 200,
+        width: 180,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 160,
+              width: 180,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: CachedNetworkImageProvider(
+                        movies.posterPath.getImageUrl(),
+                      ))),
+            ),
+            Text(
+              movies.originalTitle,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.white,
+                  ),
+              textAlign: TextAlign.start,
+              maxLines: 1,
+            )
+          ],
+        ),
       ),
     );
   }
