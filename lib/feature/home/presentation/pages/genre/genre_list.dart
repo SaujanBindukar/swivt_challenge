@@ -25,19 +25,37 @@ class _GenreListState extends State<GenreList> {
         }
         if (state is GenreLoaded) {
           final data = state.genreResponse;
-          return SizedBox(
-            height: 50,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: data.genres?.length,
-                itemBuilder: (context, index) {
-                  final genreData = data.genres?[index];
-                  return _GenreChips(genreData: genreData);
-                },
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+                child: Text(
+                  'Genres',
+                  style: Theme.of(context).textTheme.headline6?.copyWith(
+                        color: Colors.white,
+                      ),
+                ),
               ),
-            ),
+              SizedBox(
+                height: 50,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: data.genres?.length,
+                    itemBuilder: (context, index) {
+                      final genreData = data.genres?[index];
+                      return Padding(
+                        padding: EdgeInsets.only(left: index == 0 ? 8 : 0),
+                        child: _GenreChips(genreData: genreData),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ],
           );
         }
         if (state is GenreError) {

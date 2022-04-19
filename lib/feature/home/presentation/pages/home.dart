@@ -25,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
               //? user info including name [Static Data]
               Header(),
               //list of genre
+              Divider(color: Colors.white),
               GenreList(),
               //list of trending movies in carousel slider
               TrendingMoviesList(),

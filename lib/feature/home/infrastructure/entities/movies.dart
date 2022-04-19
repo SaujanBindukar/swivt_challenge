@@ -27,7 +27,7 @@ class Movies with _$Movies {
     @JsonKey(name: 'original_title') required String originalTitle,
     required String overview,
     required double popularity,
-    @JsonKey(name: 'poster_path') required String posterPath,
+    @JsonKey(name: 'poster_path') @Default('') String posterPath,
     @JsonKey(name: 'release_date') required String releaseDate,
     required String title,
     @JsonKey(name: 'vote_average') required double voteAverage,
