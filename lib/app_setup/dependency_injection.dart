@@ -1,6 +1,5 @@
 import 'package:get_it/get_it.dart';
 import 'package:swivt_challenge/app_setup/dio/dio_client.dart';
-import 'package:swivt_challenge/app_setup/hive/hive_setup.dart';
 import 'package:swivt_challenge/feature/home/applications/genre_bloc/genre_bloc.dart';
 import 'package:swivt_challenge/feature/home/applications/genre_movie_bloc/genre_movie_bloc.dart';
 import 'package:swivt_challenge/feature/home/applications/movies_bloc/movies_bloc.dart';
@@ -34,7 +33,7 @@ void registerRepository() {
       ),
     )
     ..registerLazySingleton<ILocalHomeRepository>(
-      LocalHomeRepository.new,
+      () => LocalHomeRepository(),
     )
     ..registerLazySingleton<ISearchRepository>(
       () => SearchRepository(dio: inject()),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swivt_challenge/app_setup/dependency_injection.dart';
-import 'package:swivt_challenge/core/components/custom_shimmer.dart';
 import 'package:swivt_challenge/core/components/movie_list_tile.dart';
 import 'package:swivt_challenge/core/components/movie_loading_widget.dart';
 import 'package:swivt_challenge/core/theme/app_colors.dart';

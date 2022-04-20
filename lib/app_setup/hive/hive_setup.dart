@@ -23,7 +23,7 @@ class HiveSetup {
   }
 }
 
-const String _dbDirectory = 'SwivtChallenge';
+const String _dbDirectory = 'Swivt';
 
 ///
 Future<String> get databasePath async {
