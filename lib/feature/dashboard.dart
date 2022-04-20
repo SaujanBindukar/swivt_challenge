@@ -6,7 +6,7 @@ import 'package:swivt_challenge/feature/home/applications/genre_bloc/genre_bloc.
 import 'package:swivt_challenge/feature/home/applications/movies_bloc/movies_bloc.dart';
 import 'package:swivt_challenge/feature/home/applications/trending_bloc/trending_bloc.dart';
 import 'package:swivt_challenge/feature/home/presentation/pages/home.dart';
-import 'package:swivt_challenge/feature/search/search.dart';
+import 'package:swivt_challenge/feature/search/presentation/page/search.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);

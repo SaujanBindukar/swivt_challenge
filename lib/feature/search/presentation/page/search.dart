@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swivt_challenge/app_setup/dependency_injection.dart';
 import 'package:swivt_challenge/core/components/custom_shimmer.dart';
 import 'package:swivt_challenge/core/theme/app_colors.dart';
-import 'package:swivt_challenge/feature/home/applications/search_movie_bloc/search_movie_bloc.dart';
 import 'package:swivt_challenge/feature/home/presentation/pages/movies/all_movies.dart';
+import 'package:swivt_challenge/feature/search/application/search_movie_bloc/search_movie_bloc.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
