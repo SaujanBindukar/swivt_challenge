@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swivt_challenge/app_setup/bloc_observer.dart';
 import 'package:swivt_challenge/app_setup/dependency_injection.dart';
 import 'package:swivt_challenge/app_setup/hive/hive_setup.dart';
@@ -35,6 +36,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      builder: (context, child) {
+        final mediaQueryData = MediaQuery.of(context);
+        final scale = mediaQueryData.textScaleFactor.clamp(0.8, 1.2);
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaleFactor: scale),
+          child: child!,
+        );
+      },
       home: const DashboardScreen(),
     );
   }

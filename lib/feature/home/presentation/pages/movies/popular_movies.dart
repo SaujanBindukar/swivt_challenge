@@ -167,6 +167,14 @@ class MovieTile extends StatelessWidget {
                   ),
               textAlign: TextAlign.start,
               maxLines: 1,
+            ),
+            Text(
+              movies.releaseDate,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Colors.white,
+                  ),
+              textAlign: TextAlign.start,
+              maxLines: 1,
             )
           ],
         ),

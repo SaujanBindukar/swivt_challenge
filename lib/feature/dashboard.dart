@@ -63,7 +63,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
           BottomNavigationBarItem(
             label: '',
-            icon: Icon(Icons.download),
+            icon: Icon(Icons.favorite_outline),
           ),
           BottomNavigationBarItem(
             label: '',
