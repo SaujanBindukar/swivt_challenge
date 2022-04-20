@@ -31,6 +31,13 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
               child: CachedNetworkImage(
                 fit: BoxFit.fill,
                 imageUrl: widget.movies.posterPath.getImageUrl(),
+                errorWidget: (context, _, error) {
+                  return const Icon(
+                    Icons.error,
+                    color: Colors.red,
+                    size: 50,
+                  );
+                },
               ),
             ),
             Padding(

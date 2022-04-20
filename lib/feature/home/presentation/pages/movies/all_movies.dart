@@ -1,15 +1,12 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:swivt_challenge/app_setup/dependency_injection.dart';
 import 'package:swivt_challenge/core/components/custom_shimmer.dart';
-import 'package:swivt_challenge/core/extensions/image_extension.dart';
+import 'package:swivt_challenge/core/components/movie_list_tile.dart';
 import 'package:swivt_challenge/core/theme/app_colors.dart';
 import 'package:swivt_challenge/feature/home/applications/movies_bloc/movies_bloc.dart';
-import 'package:swivt_challenge/feature/home/infrastructure/entities/movies.dart';
-import 'package:swivt_challenge/feature/home/presentation/pages/movies/movie_details.dart';
 
 class AllMoviesScreen extends StatefulWidget {
   const AllMoviesScreen({
@@ -98,7 +95,7 @@ class _AllMoviesScreenState extends State<AllMoviesScreen> {
                     },
                     onRefresh: () {
                       inject<MoviesBloc>().add(
-                        const GetPopularMovies(),
+                        const GetPopularMovies(page: 1),
                       );
                       Future.delayed(const Duration(seconds: 2),
                           _refreshController.refreshCompleted);
@@ -126,104 +123,6 @@ class _AllMoviesScreenState extends State<AllMoviesScreen> {
             ],
           );
         },
-      ),
-    );
-  }
-}
-
-class MovieListTile extends StatelessWidget {
-  const MovieListTile({
-    Key? key,
-    required this.movieData,
-  }) : super(key: key);
-
-  final Movies movieData;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MovieDetailScreen(
-              movies: movieData,
-            ),
-          ),
-        );
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 10,
-          vertical: 10,
-        ),
-        margin: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 10,
-        ),
-        decoration: BoxDecoration(
-            color: AppColors.transparentColor,
-            borderRadius: BorderRadius.circular(4)),
-        child: Row(
-          children: [
-            CircleAvatar(
-              backgroundColor: AppColors.transparentColor,
-              radius: 40,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(40),
-                child: CachedNetworkImage(
-                  fit: BoxFit.cover,
-                  height: 80,
-                  width: double.infinity,
-                  imageUrl: movieData.posterPath.getImageUrl(),
-                  progressIndicatorBuilder: (BuildContext ctx, String image,
-                      DownloadProgress progress) {
-                    return Container(
-                      color: AppColors.primaryColor
-                          .withOpacity(progress.progress ?? 1.0),
-                    );
-                  },
-                  errorWidget: (context, _, error) {
-                    return const Icon(Icons.error);
-                  },
-                ),
-              ),
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    movieData.originalTitle,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge
-                        ?.copyWith(color: Colors.white),
-                    maxLines: 2,
-                  ),
-                  Text(
-                    'Released on : ${movieData.releaseDate}',
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium
-                        ?.copyWith(color: Colors.white),
-                    maxLines: 1,
-                  ),
-                  Text(
-                    movieData.overview,
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodySmall
-                        ?.copyWith(color: Colors.white),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
       ),
     );
   }

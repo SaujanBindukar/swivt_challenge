@@ -23,7 +23,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
           final newMoviesList = moviesReponse.results;
           final newData = oldData + newMoviesList;
           emit(MoviesLoaded(
-            movieResponse: event.page == null
+            movieResponse: event.page == null || event.page == 1
                 ? moviesReponse
                 : event.oldMovieResponse!.copyWith(
                     results: newData,
