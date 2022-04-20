@@ -83,11 +83,13 @@ class _AllMoviesScreenState extends State<AllMoviesScreen> {
                   ),
                 ),
               if (state is MoviesError)
-                Text(
-                  'Unable to fetch',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Colors.white,
-                      ),
+                Center(
+                  child: Text(
+                    state.message,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Colors.white,
+                        ),
+                  ),
                 )
               else
                 const SizedBox()

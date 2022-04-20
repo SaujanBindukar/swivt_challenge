@@ -8,18 +8,20 @@ class CircularButton extends StatelessWidget {
     this.onTap,
     this.backgroundColor,
     this.iconColor,
+    this.radius,
   }) : super(key: key);
   final VoidCallback? onTap;
   final IconData iconData;
   final Color? backgroundColor;
   final Color? iconColor;
+  final double? radius;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
       child: CircleAvatar(
-        radius: 20,
+        radius: radius ?? 20,
         backgroundColor: backgroundColor ?? AppColors.transparentColor,
         child: Icon(
           iconData,

@@ -20,4 +20,7 @@ class GenreMovieLoaded extends GenreMovieState {
   List<Object> get props => [movieResponse];
 }
 
-class GenreMovieError extends GenreMovieState {}
+class GenreMovieError extends GenreMovieState {
+  const GenreMovieError({required this.message});
+  final String message;
+}

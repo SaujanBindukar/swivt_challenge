@@ -17,57 +17,67 @@ class GenreList extends StatefulWidget {
 class _GenreListState extends State<GenreList> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GenreBloc, GenreState>(
-      bloc: inject<GenreBloc>(),
-      builder: (context, state) {
-        if (state is GenreLoading) {
-          return const _GenreLoadingState();
-        }
-        if (state is GenreLoaded) {
-          final data = state.genreResponse;
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                child: Text(
-                  'Genres',
-                  style: Theme.of(context).textTheme.headline6?.copyWith(
-                        color: Colors.white,
-                      ),
-                ),
-              ),
-              SizedBox(
-                height: 50,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: data.genres?.length,
-                    itemBuilder: (context, index) {
-                      final genreData = data.genres?[index];
-                      return Padding(
-                        padding: EdgeInsets.only(left: index == 0 ? 8 : 0),
-                        child: _GenreChips(genreData: genreData),
-                      );
-                    },
-                  ),
-                ),
-              ),
-            ],
-          );
-        }
-        if (state is GenreError) {
-          return Text(
-            'Unable to fetch',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+          child: Text(
+            'Genres',
+            style: Theme.of(context).textTheme.headline6?.copyWith(
                   color: Colors.white,
                 ),
-          );
-        }
-        return const SizedBox();
-      },
+          ),
+        ),
+        BlocBuilder<GenreBloc, GenreState>(
+          bloc: inject<GenreBloc>(),
+          builder: (context, state) {
+            if (state is GenreLoading) {
+              return const _GenreLoadingState();
+            }
+            if (state is GenreLoaded) {
+              final data = state.genreResponse;
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 50,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: data.genres?.length,
+                        itemBuilder: (context, index) {
+                          final genreData = data.genres?[index];
+                          return Padding(
+                            padding: EdgeInsets.only(left: index == 0 ? 8 : 0),
+                            child: _GenreChips(genreData: genreData),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            }
+            if (state is GenreError) {
+              return Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Text(
+                    state.message,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Colors.white,
+                        ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              );
+            }
+            return const SizedBox();
+          },
+        ),
+      ],
     );
   }
 }

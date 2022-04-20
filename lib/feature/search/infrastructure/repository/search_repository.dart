@@ -1,11 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:swivt_challenge/app_setup/app_endpoints/app_endpoints.dart';
+import 'package:swivt_challenge/core/failure.dart';
 import 'package:swivt_challenge/feature/home/infrastructure/entities/movies.dart';
 
 // ignore: one_member_abstracts
 abstract class ISearchRepository {
-  Future<Either<MovieResponse, dynamic>> searchMovies({
+  Future<Either<MovieResponse, Failure>> searchMovies({
     required String name,
     int? page,
   });
@@ -15,7 +16,7 @@ class SearchRepository implements ISearchRepository {
   SearchRepository({required this.dio});
   final Dio dio;
   @override
-  Future<Either<MovieResponse, dynamic>> searchMovies(
+  Future<Either<MovieResponse, Failure>> searchMovies(
       {required String name, int? page}) async {
     try {
       final query = {
@@ -30,9 +31,9 @@ class SearchRepository implements ISearchRepository {
       final result = MovieResponse.fromJson(json);
       return Left(result);
     } on DioError catch (e) {
-      return Right(e);
+      return Right(e.toFailure);
     } catch (e) {
-      return Right(e);
+      return Right(Failure.fromException());
     }
   }
 }

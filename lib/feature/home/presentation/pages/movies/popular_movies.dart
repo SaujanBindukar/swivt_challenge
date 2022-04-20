@@ -103,11 +103,15 @@ class _PopularMoviesListState extends State<PopularMoviesList> {
                   ),
                 ),
               if (state is MoviesError)
-                Text(
-                  'Unable to fetch',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: Colors.white,
-                      ),
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Text(
+                    state.message,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Colors.white,
+                        ),
+                    textAlign: TextAlign.center,
+                  ),
                 )
               else
                 const SizedBox()

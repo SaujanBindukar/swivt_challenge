@@ -19,4 +19,7 @@ class TrendingLoaded extends TrendingState {
   List<Object> get props => [movieResponse];
 }
 
-class TrendingError extends TrendingState {}
+class TrendingError extends TrendingState {
+  const TrendingError({required this.message});
+  final String message;
+}

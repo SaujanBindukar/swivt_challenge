@@ -17,13 +17,13 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
         if (event.page == null || event.page == 1) {
           emit(MoviesLoading());
         }
-        final localDataResponse =
-            await localHomeRepository.getPopularMoviesFromLocal();
-        if (localDataResponse != null) {
-          emit(MoviesLoaded(
-            movieResponse: localDataResponse,
-          ));
-        }
+        // final localDataResponse =
+        //     await localHomeRepository.getPopularMoviesFromLocal();
+        // if (localDataResponse != null) {
+        //   emit(MoviesLoaded(
+        //     movieResponse: localDataResponse,
+        //   ));
+        // }
 
         final response =
             await homeRepository.getPopularMovies(page: event.page);
@@ -45,7 +45,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
             movieResponse: movieData,
           );
         }, (failure) {
-          emit(MoviesError());
+          emit(MoviesError(message: failure.reason));
         });
       },
     );

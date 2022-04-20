@@ -19,4 +19,7 @@ class MoviesLoaded extends MoviesState {
   List<Object> get props => [movieResponse];
 }
 
-class MoviesError extends MoviesState {}
+class MoviesError extends MoviesState {
+  const MoviesError({required this.message});
+  final String message;
+}

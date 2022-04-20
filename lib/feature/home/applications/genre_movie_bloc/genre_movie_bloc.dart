@@ -17,7 +17,7 @@ class GenreMovieBloc extends Bloc<GenreMovieEvent, GenreMovieState> {
           emit(GenreMovieLoaded(movieResponse: moviesResponse));
         },
         (failure) {
-          emit(GenreMovieError());
+          emit(GenreMovieError(message: failure.reason));
         },
       );
     });

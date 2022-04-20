@@ -27,7 +27,7 @@ class TrendingBloc extends Bloc<TrendingEvent, TrendingState> {
                 ),
         ));
       }, (failure) {
-        emit(TrendingError());
+        emit(TrendingError(message: failure.reason));
       });
     });
   }

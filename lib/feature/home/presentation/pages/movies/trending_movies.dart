@@ -166,6 +166,19 @@ class _TrendingMoviesListState extends State<TrendingMoviesList> {
                   ],
                 ),
               ),
+            if (state is TrendingError)
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Center(
+                  child: Text(
+                    state.message,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Colors.white,
+                        ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
             const SizedBox(),
           ],
         );

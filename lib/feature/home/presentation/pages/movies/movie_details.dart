@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:swivt_challenge/core/components/circular_button.dart';
+import 'package:swivt_challenge/core/components/item_container.dart';
 import 'package:swivt_challenge/core/extensions/image_extension.dart';
 import 'package:swivt_challenge/core/theme/app_colors.dart';
 import 'package:swivt_challenge/feature/home/infrastructure/entities/movies.dart';
@@ -28,16 +29,35 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
             SizedBox(
               height: MediaQuery.of(context).size.height / 2,
               width: MediaQuery.of(context).size.width,
-              child: CachedNetworkImage(
-                fit: BoxFit.fill,
-                imageUrl: widget.movies.posterPath.getImageUrl(),
-                errorWidget: (context, _, error) {
-                  return const Icon(
-                    Icons.error,
-                    color: Colors.red,
-                    size: 50,
-                  );
-                },
+              child: Stack(
+                children: [
+                  CachedNetworkImage(
+                    fit: BoxFit.fill,
+                    width: double.infinity,
+                    imageUrl: widget.movies.posterPath.getImageUrl(),
+                    errorWidget: (context, _, error) {
+                      return const Icon(
+                        Icons.error,
+                        color: Colors.red,
+                        size: 50,
+                      );
+                    },
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical: MediaQuery.of(context).padding.top,
+                    ),
+                    child: CircularButton(
+                      radius: 30,
+                      iconData: Icons.chevron_left,
+                      iconColor: Colors.white,
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  )
+                ],
               ),
             ),
             Padding(
@@ -87,6 +107,24 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ItemContainer(
+                        keys: 'Vote Count',
+                        value: widget.movies.voteCount.toString(),
+                      ),
+                      ItemContainer(
+                        keys: 'Vote Average',
+                        value: widget.movies.voteAverage.toString(),
+                      ),
+                      ItemContainer(
+                        keys: 'Popularity',
+                        value: widget.movies.popularity.toString(),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
                   Text(
                     widget.movies.title,
                     style: Theme.of(context).textTheme.headline6?.copyWith(
