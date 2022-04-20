@@ -38,5 +38,5 @@ class GenreBloc extends Bloc<GenreEvent, GenreState> {
     //   );
     // });
   }
-  final HomeRepository homeRepository;
+  final IHomeRepository homeRepository;
 }

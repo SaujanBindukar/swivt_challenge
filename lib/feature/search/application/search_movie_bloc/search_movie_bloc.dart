@@ -24,5 +24,5 @@ class SearchMovieBloc extends Bloc<SearchMovieEvent, SearchMovieState> {
       }
     });
   }
-  final SearchRepository searchRepository;
+  final ISearchRepository searchRepository;
 }

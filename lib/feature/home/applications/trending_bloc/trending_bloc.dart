@@ -31,5 +31,5 @@ class TrendingBloc extends Bloc<TrendingEvent, TrendingState> {
       });
     });
   }
-  final HomeRepository homeRepository;
+  final IHomeRepository homeRepository;
 }

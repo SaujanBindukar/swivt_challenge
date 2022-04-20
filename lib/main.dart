@@ -7,8 +7,8 @@ import 'package:swivt_challenge/feature/dashboard.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  initDependencyInjection();
-  HiveSetup.initHive();
+  initApp();
+
   BlocOverrides.runZoned(
     () {
       runApp(
@@ -17,6 +17,11 @@ void main() {
     },
     blocObserver: SwivtBlocObserver(),
   );
+}
+
+Future<void> initApp() async {
+  initDependencyInjection();
+  await HiveSetup.initHive();
 }
 
 class MyApp extends StatelessWidget {

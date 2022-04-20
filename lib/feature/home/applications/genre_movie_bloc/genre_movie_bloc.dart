@@ -23,5 +23,5 @@ class GenreMovieBloc extends Bloc<GenreMovieEvent, GenreMovieState> {
     });
   }
 
-  final HomeRepository homeRepository;
+  final IHomeRepository homeRepository;
 }

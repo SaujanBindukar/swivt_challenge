@@ -1,10 +1,12 @@
 import 'package:get_it/get_it.dart';
 import 'package:swivt_challenge/app_setup/dio/dio_client.dart';
+import 'package:swivt_challenge/app_setup/hive/hive_setup.dart';
 import 'package:swivt_challenge/feature/home/applications/genre_bloc/genre_bloc.dart';
 import 'package:swivt_challenge/feature/home/applications/genre_movie_bloc/genre_movie_bloc.dart';
 import 'package:swivt_challenge/feature/home/applications/movies_bloc/movies_bloc.dart';
 import 'package:swivt_challenge/feature/home/applications/trending_bloc/trending_bloc.dart';
 import 'package:swivt_challenge/feature/home/infrastructure/repository/home_repository.dart';
+import 'package:swivt_challenge/feature/home/infrastructure/repository/local_home_repository.dart';
 import 'package:swivt_challenge/feature/search/application/search_movie_bloc/search_movie_bloc.dart';
 import 'package:swivt_challenge/feature/search/infrastructure/repository/search_repository.dart';
 
@@ -26,10 +28,15 @@ void registerClient() {
 //register all the repository
 void registerRepository() {
   inject
-    ..registerLazySingleton(
-      () => HomeRepository(dio: inject()),
+    ..registerLazySingleton<IHomeRepository>(
+      () => HomeRepository(
+        dio: inject(),
+      ),
     )
-    ..registerLazySingleton(
+    ..registerLazySingleton<ILocalHomeRepository>(
+      LocalHomeRepository.new,
+    )
+    ..registerLazySingleton<ISearchRepository>(
       () => SearchRepository(dio: inject()),
     );
 }
@@ -38,7 +45,10 @@ void registerRepository() {
 void registerBloc() {
   inject
     ..registerLazySingleton(
-      () => MoviesBloc(homeRepository: inject()),
+      () => MoviesBloc(
+        homeRepository: inject(),
+        localHomeRepository: inject(),
+      ),
     )
     ..registerLazySingleton(
       () => GenreBloc(homeRepository: inject()),

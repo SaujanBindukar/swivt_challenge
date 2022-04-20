@@ -19,7 +19,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   void initState() {
     //fetch popular movies
-    inject<MoviesBloc>().add(const GetPopularMovies());
+    inject<MoviesBloc>().add(const GetPopularMovies(page: 1));
 
     //fetch genre list
     inject<GenreBloc>().add(GetGenreList());
