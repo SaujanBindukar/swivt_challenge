@@ -5,6 +5,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:swivt_challenge/app_setup/dependency_injection.dart';
 import 'package:swivt_challenge/core/components/custom_shimmer.dart';
 import 'package:swivt_challenge/core/components/movie_list_tile.dart';
+import 'package:swivt_challenge/core/components/movie_loading_widget.dart';
 import 'package:swivt_challenge/core/theme/app_colors.dart';
 import 'package:swivt_challenge/feature/home/applications/movies_bloc/movies_bloc.dart';
 
@@ -41,36 +42,7 @@ class _AllMoviesScreenState extends State<AllMoviesScreen> {
           final data = state is MoviesLoaded ? state.movieResponse : null;
           return Column(
             children: [
-              if (state is MoviesLoading)
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: ListView.builder(
-                        itemCount: 10,
-                        physics: const AlwaysScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return CustomShimmer(
-                            baseColor: AppColors.transparentColor,
-                            highlightColor: Colors.grey.shade100,
-                            widget: Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 10,
-                              ),
-                              margin: const EdgeInsets.symmetric(
-                                horizontal: 20,
-                                vertical: 10,
-                              ),
-                              height: 100,
-                              decoration: BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius: BorderRadius.circular(5),
-                              ),
-                            ),
-                          );
-                        }),
-                  ),
-                ),
+              if (state is MoviesLoading) const MovieLoadingWidget(),
               if (state is MoviesLoaded)
                 Expanded(
                   child: SmartRefresher(
