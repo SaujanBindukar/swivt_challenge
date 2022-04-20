@@ -22,7 +22,7 @@ GenreResponse _$GenreResponseFromJson(Map<String, dynamic> json) {
 class _$GenreResponseTearOff {
   const _$GenreResponseTearOff();
 
-  _GenreResponse call({List<Genres>? genres = const <Genres>[]}) {
+  _GenreResponse call({@HiveField(0) List<Genres>? genres = const <Genres>[]}) {
     return _GenreResponse(
       genres: genres,
     );
@@ -38,6 +38,7 @@ const $GenreResponse = _$GenreResponseTearOff();
 
 /// @nodoc
 mixin _$GenreResponse {
+  @HiveField(0)
   List<Genres>? get genres => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,7 +52,7 @@ abstract class $GenreResponseCopyWith<$Res> {
   factory $GenreResponseCopyWith(
           GenreResponse value, $Res Function(GenreResponse) then) =
       _$GenreResponseCopyWithImpl<$Res>;
-  $Res call({List<Genres>? genres});
+  $Res call({@HiveField(0) List<Genres>? genres});
 }
 
 /// @nodoc
@@ -83,7 +84,7 @@ abstract class _$GenreResponseCopyWith<$Res>
           _GenreResponse value, $Res Function(_GenreResponse) then) =
       __$GenreResponseCopyWithImpl<$Res>;
   @override
-  $Res call({List<Genres>? genres});
+  $Res call({@HiveField(0) List<Genres>? genres});
 }
 
 /// @nodoc
@@ -113,13 +114,14 @@ class __$GenreResponseCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_GenreResponse implements _GenreResponse {
-  const _$_GenreResponse({this.genres = const <Genres>[]});
+  const _$_GenreResponse({@HiveField(0) this.genres = const <Genres>[]});
 
   factory _$_GenreResponse.fromJson(Map<String, dynamic> json) =>
       _$$_GenreResponseFromJson(json);
 
   @JsonKey()
   @override
+  @HiveField(0)
   final List<Genres>? genres;
 
   @override
@@ -151,12 +153,14 @@ class _$_GenreResponse implements _GenreResponse {
 }
 
 abstract class _GenreResponse implements GenreResponse {
-  const factory _GenreResponse({List<Genres>? genres}) = _$_GenreResponse;
+  const factory _GenreResponse({@HiveField(0) List<Genres>? genres}) =
+      _$_GenreResponse;
 
   factory _GenreResponse.fromJson(Map<String, dynamic> json) =
       _$_GenreResponse.fromJson;
 
   @override
+  @HiveField(0)
   List<Genres>? get genres;
   @override
   @JsonKey(ignore: true)
@@ -172,7 +176,8 @@ Genres _$GenresFromJson(Map<String, dynamic> json) {
 class _$GenresTearOff {
   const _$GenresTearOff();
 
-  _Genres call({required int id, required String name}) {
+  _Genres call(
+      {@HiveField(0) required int id, @HiveField(1) required String name}) {
     return _Genres(
       id: id,
       name: name,
@@ -189,7 +194,9 @@ const $Genres = _$GenresTearOff();
 
 /// @nodoc
 mixin _$Genres {
+  @HiveField(0)
   int get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -201,7 +208,7 @@ mixin _$Genres {
 abstract class $GenresCopyWith<$Res> {
   factory $GenresCopyWith(Genres value, $Res Function(Genres) then) =
       _$GenresCopyWithImpl<$Res>;
-  $Res call({int id, String name});
+  $Res call({@HiveField(0) int id, @HiveField(1) String name});
 }
 
 /// @nodoc
@@ -235,7 +242,7 @@ abstract class _$GenresCopyWith<$Res> implements $GenresCopyWith<$Res> {
   factory _$GenresCopyWith(_Genres value, $Res Function(_Genres) then) =
       __$GenresCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String name});
+  $Res call({@HiveField(0) int id, @HiveField(1) String name});
 }
 
 /// @nodoc
@@ -268,14 +275,17 @@ class __$GenresCopyWithImpl<$Res> extends _$GenresCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Genres implements _Genres {
-  const _$_Genres({required this.id, required this.name});
+  const _$_Genres(
+      {@HiveField(0) required this.id, @HiveField(1) required this.name});
 
   factory _$_Genres.fromJson(Map<String, dynamic> json) =>
       _$$_GenresFromJson(json);
 
   @override
+  @HiveField(0)
   final int id;
   @override
+  @HiveField(1)
   final String name;
 
   @override
@@ -310,13 +320,17 @@ class _$_Genres implements _Genres {
 }
 
 abstract class _Genres implements Genres {
-  const factory _Genres({required int id, required String name}) = _$_Genres;
+  const factory _Genres(
+      {@HiveField(0) required int id,
+      @HiveField(1) required String name}) = _$_Genres;
 
   factory _Genres.fromJson(Map<String, dynamic> json) = _$_Genres.fromJson;
 
   @override
+  @HiveField(0)
   int get id;
   @override
+  @HiveField(1)
   String get name;
   @override
   @JsonKey(ignore: true)

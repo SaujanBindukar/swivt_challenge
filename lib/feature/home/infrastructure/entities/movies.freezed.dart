@@ -23,10 +23,16 @@ class _$MovieResponseTearOff {
   const _$MovieResponseTearOff();
 
   _MovieResponse call(
-      {required int page,
-      List<Movies> results = const <Movies>[],
-      @JsonKey(name: 'total_pages') required int totalPages,
-      @JsonKey(name: 'total_results') required int totalResults}) {
+      {@HiveField(0)
+          required int page,
+      @HiveField(1)
+          List<Movies> results = const <Movies>[],
+      @HiveField(2)
+      @JsonKey(name: 'total_pages')
+          required int totalPages,
+      @HiveField(3)
+      @JsonKey(name: 'total_results')
+          required int totalResults}) {
     return _MovieResponse(
       page: page,
       results: results,
@@ -45,10 +51,14 @@ const $MovieResponse = _$MovieResponseTearOff();
 
 /// @nodoc
 mixin _$MovieResponse {
+  @HiveField(0)
   int get page => throw _privateConstructorUsedError;
+  @HiveField(1)
   List<Movies> get results => throw _privateConstructorUsedError;
+  @HiveField(2)
   @JsonKey(name: 'total_pages')
   int get totalPages => throw _privateConstructorUsedError;
+  @HiveField(3)
   @JsonKey(name: 'total_results')
   int get totalResults => throw _privateConstructorUsedError;
 
@@ -64,10 +74,10 @@ abstract class $MovieResponseCopyWith<$Res> {
           MovieResponse value, $Res Function(MovieResponse) then) =
       _$MovieResponseCopyWithImpl<$Res>;
   $Res call(
-      {int page,
-      List<Movies> results,
-      @JsonKey(name: 'total_pages') int totalPages,
-      @JsonKey(name: 'total_results') int totalResults});
+      {@HiveField(0) int page,
+      @HiveField(1) List<Movies> results,
+      @HiveField(2) @JsonKey(name: 'total_pages') int totalPages,
+      @HiveField(3) @JsonKey(name: 'total_results') int totalResults});
 }
 
 /// @nodoc
@@ -115,10 +125,10 @@ abstract class _$MovieResponseCopyWith<$Res>
       __$MovieResponseCopyWithImpl<$Res>;
   @override
   $Res call(
-      {int page,
-      List<Movies> results,
-      @JsonKey(name: 'total_pages') int totalPages,
-      @JsonKey(name: 'total_results') int totalResults});
+      {@HiveField(0) int page,
+      @HiveField(1) List<Movies> results,
+      @HiveField(2) @JsonKey(name: 'total_pages') int totalPages,
+      @HiveField(3) @JsonKey(name: 'total_results') int totalResults});
 }
 
 /// @nodoc
@@ -164,23 +174,33 @@ class __$MovieResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_MovieResponse implements _MovieResponse {
   const _$_MovieResponse(
-      {required this.page,
-      this.results = const <Movies>[],
-      @JsonKey(name: 'total_pages') required this.totalPages,
-      @JsonKey(name: 'total_results') required this.totalResults});
+      {@HiveField(0)
+          required this.page,
+      @HiveField(1)
+          this.results = const <Movies>[],
+      @HiveField(2)
+      @JsonKey(name: 'total_pages')
+          required this.totalPages,
+      @HiveField(3)
+      @JsonKey(name: 'total_results')
+          required this.totalResults});
 
   factory _$_MovieResponse.fromJson(Map<String, dynamic> json) =>
       _$$_MovieResponseFromJson(json);
 
   @override
+  @HiveField(0)
   final int page;
   @JsonKey()
   @override
+  @HiveField(1)
   final List<Movies> results;
   @override
+  @HiveField(2)
   @JsonKey(name: 'total_pages')
   final int totalPages;
   @override
+  @HiveField(3)
   @JsonKey(name: 'total_results')
   final int totalResults;
 
@@ -223,23 +243,32 @@ class _$_MovieResponse implements _MovieResponse {
 
 abstract class _MovieResponse implements MovieResponse {
   const factory _MovieResponse(
-          {required int page,
+      {@HiveField(0)
+          required int page,
+      @HiveField(1)
           List<Movies> results,
-          @JsonKey(name: 'total_pages') required int totalPages,
-          @JsonKey(name: 'total_results') required int totalResults}) =
-      _$_MovieResponse;
+      @HiveField(2)
+      @JsonKey(name: 'total_pages')
+          required int totalPages,
+      @HiveField(3)
+      @JsonKey(name: 'total_results')
+          required int totalResults}) = _$_MovieResponse;
 
   factory _MovieResponse.fromJson(Map<String, dynamic> json) =
       _$_MovieResponse.fromJson;
 
   @override
+  @HiveField(0)
   int get page;
   @override
+  @HiveField(1)
   List<Movies> get results;
   @override
+  @HiveField(2)
   @JsonKey(name: 'total_pages')
   int get totalPages;
   @override
+  @HiveField(3)
   @JsonKey(name: 'total_results')
   int get totalResults;
   @override
@@ -257,21 +286,43 @@ class _$MoviesTearOff {
   const _$MoviesTearOff();
 
   _Movies call(
-      {required bool adult,
-      @JsonKey(name: 'backdrop_path') String? backdropPath,
-      required int id,
-      @JsonKey(name: 'original_language') required String originalLanguage,
-      @JsonKey(name: 'original_title') required String originalTitle,
-      required String overview,
-      required double popularity,
-      @JsonKey(name: 'poster_path') String posterPath = '',
-      @JsonKey(name: 'release_date') required String releaseDate,
-      required String title,
-      @JsonKey(name: 'vote_average') required double voteAverage,
-      @JsonKey(name: 'vote_count') required int voteCount,
-      List<Genres>? genres = const <Genres>[],
-      String? status,
-      String? tagline}) {
+      {@HiveField(0)
+          required bool adult,
+      @HiveField(1)
+      @JsonKey(name: 'backdrop_path')
+          String? backdropPath,
+      @HiveField(2)
+          required int id,
+      @HiveField(3)
+      @JsonKey(name: 'original_language')
+          required String originalLanguage,
+      @HiveField(4)
+      @JsonKey(name: 'original_title')
+          required String originalTitle,
+      @HiveField(5)
+          required String overview,
+      @HiveField(6)
+          required double popularity,
+      @HiveField(7)
+      @JsonKey(name: 'poster_path')
+          String posterPath = '',
+      @HiveField(8)
+      @JsonKey(name: 'release_date')
+          required String releaseDate,
+      @HiveField(9)
+          required String title,
+      @HiveField(10)
+      @JsonKey(name: 'vote_average')
+          required double voteAverage,
+      @HiveField(11)
+      @JsonKey(name: 'vote_count')
+          required int voteCount,
+      @HiveField(12)
+          List<Genres>? genres = const <Genres>[],
+      @HiveField(13)
+          String? status,
+      @HiveField(14)
+          String? tagline}) {
     return _Movies(
       adult: adult,
       backdropPath: backdropPath,
@@ -301,27 +352,42 @@ const $Movies = _$MoviesTearOff();
 
 /// @nodoc
 mixin _$Movies {
+  @HiveField(0)
   bool get adult => throw _privateConstructorUsedError;
+  @HiveField(1)
   @JsonKey(name: 'backdrop_path')
   String? get backdropPath => throw _privateConstructorUsedError;
+  @HiveField(2)
   int get id => throw _privateConstructorUsedError;
+  @HiveField(3)
   @JsonKey(name: 'original_language')
   String get originalLanguage => throw _privateConstructorUsedError;
+  @HiveField(4)
   @JsonKey(name: 'original_title')
   String get originalTitle => throw _privateConstructorUsedError;
+  @HiveField(5)
   String get overview => throw _privateConstructorUsedError;
+  @HiveField(6)
   double get popularity => throw _privateConstructorUsedError;
+  @HiveField(7)
   @JsonKey(name: 'poster_path')
   String get posterPath => throw _privateConstructorUsedError;
+  @HiveField(8)
   @JsonKey(name: 'release_date')
   String get releaseDate => throw _privateConstructorUsedError;
+  @HiveField(9)
   String get title => throw _privateConstructorUsedError;
+  @HiveField(10)
   @JsonKey(name: 'vote_average')
   double get voteAverage => throw _privateConstructorUsedError;
+  @HiveField(11)
   @JsonKey(name: 'vote_count')
   int get voteCount => throw _privateConstructorUsedError;
+  @HiveField(12)
   List<Genres>? get genres => throw _privateConstructorUsedError;
+  @HiveField(13)
   String? get status => throw _privateConstructorUsedError;
+  @HiveField(14)
   String? get tagline => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -334,21 +400,21 @@ abstract class $MoviesCopyWith<$Res> {
   factory $MoviesCopyWith(Movies value, $Res Function(Movies) then) =
       _$MoviesCopyWithImpl<$Res>;
   $Res call(
-      {bool adult,
-      @JsonKey(name: 'backdrop_path') String? backdropPath,
-      int id,
-      @JsonKey(name: 'original_language') String originalLanguage,
-      @JsonKey(name: 'original_title') String originalTitle,
-      String overview,
-      double popularity,
-      @JsonKey(name: 'poster_path') String posterPath,
-      @JsonKey(name: 'release_date') String releaseDate,
-      String title,
-      @JsonKey(name: 'vote_average') double voteAverage,
-      @JsonKey(name: 'vote_count') int voteCount,
-      List<Genres>? genres,
-      String? status,
-      String? tagline});
+      {@HiveField(0) bool adult,
+      @HiveField(1) @JsonKey(name: 'backdrop_path') String? backdropPath,
+      @HiveField(2) int id,
+      @HiveField(3) @JsonKey(name: 'original_language') String originalLanguage,
+      @HiveField(4) @JsonKey(name: 'original_title') String originalTitle,
+      @HiveField(5) String overview,
+      @HiveField(6) double popularity,
+      @HiveField(7) @JsonKey(name: 'poster_path') String posterPath,
+      @HiveField(8) @JsonKey(name: 'release_date') String releaseDate,
+      @HiveField(9) String title,
+      @HiveField(10) @JsonKey(name: 'vote_average') double voteAverage,
+      @HiveField(11) @JsonKey(name: 'vote_count') int voteCount,
+      @HiveField(12) List<Genres>? genres,
+      @HiveField(13) String? status,
+      @HiveField(14) String? tagline});
 }
 
 /// @nodoc
@@ -448,21 +514,21 @@ abstract class _$MoviesCopyWith<$Res> implements $MoviesCopyWith<$Res> {
       __$MoviesCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool adult,
-      @JsonKey(name: 'backdrop_path') String? backdropPath,
-      int id,
-      @JsonKey(name: 'original_language') String originalLanguage,
-      @JsonKey(name: 'original_title') String originalTitle,
-      String overview,
-      double popularity,
-      @JsonKey(name: 'poster_path') String posterPath,
-      @JsonKey(name: 'release_date') String releaseDate,
-      String title,
-      @JsonKey(name: 'vote_average') double voteAverage,
-      @JsonKey(name: 'vote_count') int voteCount,
-      List<Genres>? genres,
-      String? status,
-      String? tagline});
+      {@HiveField(0) bool adult,
+      @HiveField(1) @JsonKey(name: 'backdrop_path') String? backdropPath,
+      @HiveField(2) int id,
+      @HiveField(3) @JsonKey(name: 'original_language') String originalLanguage,
+      @HiveField(4) @JsonKey(name: 'original_title') String originalTitle,
+      @HiveField(5) String overview,
+      @HiveField(6) double popularity,
+      @HiveField(7) @JsonKey(name: 'poster_path') String posterPath,
+      @HiveField(8) @JsonKey(name: 'release_date') String releaseDate,
+      @HiveField(9) String title,
+      @HiveField(10) @JsonKey(name: 'vote_average') double voteAverage,
+      @HiveField(11) @JsonKey(name: 'vote_count') int voteCount,
+      @HiveField(12) List<Genres>? genres,
+      @HiveField(13) String? status,
+      @HiveField(14) String? tagline});
 }
 
 /// @nodoc
@@ -561,62 +627,99 @@ class __$MoviesCopyWithImpl<$Res> extends _$MoviesCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Movies implements _Movies {
   const _$_Movies(
-      {required this.adult,
-      @JsonKey(name: 'backdrop_path') this.backdropPath,
-      required this.id,
-      @JsonKey(name: 'original_language') required this.originalLanguage,
-      @JsonKey(name: 'original_title') required this.originalTitle,
-      required this.overview,
-      required this.popularity,
-      @JsonKey(name: 'poster_path') this.posterPath = '',
-      @JsonKey(name: 'release_date') required this.releaseDate,
-      required this.title,
-      @JsonKey(name: 'vote_average') required this.voteAverage,
-      @JsonKey(name: 'vote_count') required this.voteCount,
-      this.genres = const <Genres>[],
-      this.status,
-      this.tagline});
+      {@HiveField(0)
+          required this.adult,
+      @HiveField(1)
+      @JsonKey(name: 'backdrop_path')
+          this.backdropPath,
+      @HiveField(2)
+          required this.id,
+      @HiveField(3)
+      @JsonKey(name: 'original_language')
+          required this.originalLanguage,
+      @HiveField(4)
+      @JsonKey(name: 'original_title')
+          required this.originalTitle,
+      @HiveField(5)
+          required this.overview,
+      @HiveField(6)
+          required this.popularity,
+      @HiveField(7)
+      @JsonKey(name: 'poster_path')
+          this.posterPath = '',
+      @HiveField(8)
+      @JsonKey(name: 'release_date')
+          required this.releaseDate,
+      @HiveField(9)
+          required this.title,
+      @HiveField(10)
+      @JsonKey(name: 'vote_average')
+          required this.voteAverage,
+      @HiveField(11)
+      @JsonKey(name: 'vote_count')
+          required this.voteCount,
+      @HiveField(12)
+          this.genres = const <Genres>[],
+      @HiveField(13)
+          this.status,
+      @HiveField(14)
+          this.tagline});
 
   factory _$_Movies.fromJson(Map<String, dynamic> json) =>
       _$$_MoviesFromJson(json);
 
   @override
+  @HiveField(0)
   final bool adult;
   @override
+  @HiveField(1)
   @JsonKey(name: 'backdrop_path')
   final String? backdropPath;
   @override
+  @HiveField(2)
   final int id;
   @override
+  @HiveField(3)
   @JsonKey(name: 'original_language')
   final String originalLanguage;
   @override
+  @HiveField(4)
   @JsonKey(name: 'original_title')
   final String originalTitle;
   @override
+  @HiveField(5)
   final String overview;
   @override
+  @HiveField(6)
   final double popularity;
   @override
+  @HiveField(7)
   @JsonKey(name: 'poster_path')
   final String posterPath;
   @override
+  @HiveField(8)
   @JsonKey(name: 'release_date')
   final String releaseDate;
   @override
+  @HiveField(9)
   final String title;
   @override
+  @HiveField(10)
   @JsonKey(name: 'vote_average')
   final double voteAverage;
   @override
+  @HiveField(11)
   @JsonKey(name: 'vote_count')
   final int voteCount;
   @JsonKey()
   @override
+  @HiveField(12)
   final List<Genres>? genres;
   @override
+  @HiveField(13)
   final String? status;
   @override
+  @HiveField(14)
   final String? tagline;
 
   @override
@@ -685,60 +788,97 @@ class _$_Movies implements _Movies {
 
 abstract class _Movies implements Movies {
   const factory _Movies(
-      {required bool adult,
-      @JsonKey(name: 'backdrop_path') String? backdropPath,
-      required int id,
-      @JsonKey(name: 'original_language') required String originalLanguage,
-      @JsonKey(name: 'original_title') required String originalTitle,
-      required String overview,
-      required double popularity,
-      @JsonKey(name: 'poster_path') String posterPath,
-      @JsonKey(name: 'release_date') required String releaseDate,
-      required String title,
-      @JsonKey(name: 'vote_average') required double voteAverage,
-      @JsonKey(name: 'vote_count') required int voteCount,
-      List<Genres>? genres,
-      String? status,
-      String? tagline}) = _$_Movies;
+      {@HiveField(0)
+          required bool adult,
+      @HiveField(1)
+      @JsonKey(name: 'backdrop_path')
+          String? backdropPath,
+      @HiveField(2)
+          required int id,
+      @HiveField(3)
+      @JsonKey(name: 'original_language')
+          required String originalLanguage,
+      @HiveField(4)
+      @JsonKey(name: 'original_title')
+          required String originalTitle,
+      @HiveField(5)
+          required String overview,
+      @HiveField(6)
+          required double popularity,
+      @HiveField(7)
+      @JsonKey(name: 'poster_path')
+          String posterPath,
+      @HiveField(8)
+      @JsonKey(name: 'release_date')
+          required String releaseDate,
+      @HiveField(9)
+          required String title,
+      @HiveField(10)
+      @JsonKey(name: 'vote_average')
+          required double voteAverage,
+      @HiveField(11)
+      @JsonKey(name: 'vote_count')
+          required int voteCount,
+      @HiveField(12)
+          List<Genres>? genres,
+      @HiveField(13)
+          String? status,
+      @HiveField(14)
+          String? tagline}) = _$_Movies;
 
   factory _Movies.fromJson(Map<String, dynamic> json) = _$_Movies.fromJson;
 
   @override
+  @HiveField(0)
   bool get adult;
   @override
+  @HiveField(1)
   @JsonKey(name: 'backdrop_path')
   String? get backdropPath;
   @override
+  @HiveField(2)
   int get id;
   @override
+  @HiveField(3)
   @JsonKey(name: 'original_language')
   String get originalLanguage;
   @override
+  @HiveField(4)
   @JsonKey(name: 'original_title')
   String get originalTitle;
   @override
+  @HiveField(5)
   String get overview;
   @override
+  @HiveField(6)
   double get popularity;
   @override
+  @HiveField(7)
   @JsonKey(name: 'poster_path')
   String get posterPath;
   @override
+  @HiveField(8)
   @JsonKey(name: 'release_date')
   String get releaseDate;
   @override
+  @HiveField(9)
   String get title;
   @override
+  @HiveField(10)
   @JsonKey(name: 'vote_average')
   double get voteAverage;
   @override
+  @HiveField(11)
   @JsonKey(name: 'vote_count')
   int get voteCount;
   @override
+  @HiveField(12)
   List<Genres>? get genres;
   @override
+  @HiveField(13)
   String? get status;
   @override
+  @HiveField(14)
   String? get tagline;
   @override
   @JsonKey(ignore: true)

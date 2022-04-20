@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:swivt_challenge/app_setup/bloc_observer.dart';
 import 'package:swivt_challenge/app_setup/dependency_injection.dart';
+import 'package:swivt_challenge/app_setup/hive/hive_setup.dart';
 import 'package:swivt_challenge/feature/dashboard.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   initDependencyInjection();
+  HiveSetup.initHive();
   BlocOverrides.runZoned(
     () {
       runApp(
