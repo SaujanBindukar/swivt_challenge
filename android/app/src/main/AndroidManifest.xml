@@ -2,7 +2,7 @@
     package="com.example.swivt_challenge">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="swivt_challenge"
+        android:label="Swivt Challenge"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,3 +1,5 @@
+/// Api Endpoints
+
 class GenreEp {
   static const String getGenre = '/genre/movie/list';
   static const String getMovieByGenre = '/discover/movie';

@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 
+/// observe the change on every bloc
+
 class SwivtBlocObserver extends BlocObserver {
   @override
   void onTransition(Bloc bloc, Transition transition) {

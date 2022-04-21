@@ -6,8 +6,6 @@ import 'package:swivt_challenge/app_setup/hive/hive_adapter.dart';
 
 /// Setup class for hive
 class HiveSetup {
-  // static Future _init;
-
   // Private constructor
   HiveSetup._();
 
@@ -25,7 +23,7 @@ class HiveSetup {
 
 const String _dbDirectory = 'Swivt';
 
-///
+/// getting the app directory
 Future<String> get databasePath async {
   final appDir = await getApplicationDocumentsDirectory();
   final databaseDir = Directory('${appDir.path}/$_dbDirectory');

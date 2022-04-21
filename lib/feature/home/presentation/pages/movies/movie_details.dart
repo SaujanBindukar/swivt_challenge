@@ -42,6 +42,16 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                         size: 50,
                       );
                     },
+                    progressIndicatorBuilder: (BuildContext ctx, String image,
+                        DownloadProgress progress) {
+                      return Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height / 2,
+                        color: AppColors.primaryColor.withOpacity(
+                          progress.progress ?? 1.0,
+                        ),
+                      );
+                    },
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(

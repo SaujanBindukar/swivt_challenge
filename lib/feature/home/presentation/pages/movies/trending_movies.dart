@@ -73,6 +73,8 @@ class _TrendingMoviesListState extends State<TrendingMoviesList> {
                                       ));
                                 },
                                 child: Container(
+                                  decoration: const BoxDecoration(
+                                      color: AppColors.transparentColor),
                                   margin: const EdgeInsets.all(5),
                                   child: ClipRRect(
                                       borderRadius: const BorderRadius.all(
