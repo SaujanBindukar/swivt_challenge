@@ -11,8 +11,10 @@ class GetPopularMovies extends MoviesEvent {
   const GetPopularMovies({
     this.page,
     this.oldMovieResponse,
+    this.fromRemote,
   });
   final int? page;
+  final bool? fromRemote;
   final MovieResponse? oldMovieResponse;
 }
 

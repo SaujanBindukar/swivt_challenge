@@ -28,9 +28,7 @@ void registerClient() {
 void registerRepository() {
   inject
     ..registerLazySingleton<IHomeRepository>(
-      () => HomeRepository(
-        dio: inject(),
-      ),
+      () => HomeRepository(dio: inject(), localHomeRepository: inject()),
     )
     ..registerLazySingleton<ILocalHomeRepository>(
       () => LocalHomeRepository(),
