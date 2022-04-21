@@ -3,6 +3,8 @@ import 'package:swivt_challenge/core/failure.dart';
 import 'package:swivt_challenge/feature/home/infrastructure/entities/genre.dart';
 import 'package:swivt_challenge/feature/home/infrastructure/repository/home_repository.dart';
 
+///repository for test case
+
 class GetGenre {
   const GetGenre({required this.homeRepository});
   final IHomeRepository homeRepository;

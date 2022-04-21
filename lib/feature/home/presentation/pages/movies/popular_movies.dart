@@ -150,15 +150,23 @@ class MovieTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            SizedBox(
               height: 160,
               width: 180,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      fit: BoxFit.fill,
-                      image: CachedNetworkImageProvider(
-                        movies.posterPath.getImageUrl(),
-                      ))),
+              child: CachedNetworkImage(
+                imageUrl: movies.posterPath.getImageUrl(),
+                fit: BoxFit.fill,
+                progressIndicatorBuilder: (BuildContext ctx, String image,
+                    DownloadProgress progress) {
+                  return Container(
+                    width: 160,
+                    height: 180,
+                    color: AppColors.primaryColor.withOpacity(
+                      progress.progress ?? 1.0,
+                    ),
+                  );
+                },
+              ),
             ),
             Text(
               movies.originalTitle,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:swivt_challenge/core/theme/app_colors.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -10,6 +11,17 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      backgroundColor: AppColors.primaryColor,
+      body: Center(
+        child: Text(
+          'Under Construction....',
+          style: Theme.of(context)
+              .textTheme
+              .headline6
+              ?.copyWith(color: Colors.white),
+        ),
+      ),
+    );
   }
 }
