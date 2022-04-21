@@ -36,12 +36,12 @@
 **Plugin Used:**
 ###### Network & Connectivity :
   - [dio: ^4.0.6]
-  - 
+  
 ###### State Management and Dependency Injection :
   - [flutter_bloc: ^8.0.1]
   - [equatable: ^2.0.3]
   - [get_it: ^7.2.0]
-  - 
+  
 ###### Code and Data Class Generation with Functional Programming :
   - [dartz: ^0.10.1]
   - [hive_generator: ^1.1.2]
@@ -54,7 +54,7 @@
   - [hive: ^2.1.0]
   - [path_provider: ^2.0.9]
 
-  
+
 ###### Linting :
   - [very_good_analysis: ^2.1.2]
 
