@@ -2,9 +2,22 @@
 
 **Description:**
   > This is a movie app that gives the informations about trending movies, popular movies, genre and movies by genre.
+  > The app contains five main workable screens.
+  > Dashboard Screen: Contains bottom navigation bar with four screens (two workable).
+  > Home Screen: Contains header(static data), List of Genre, list of trending movies in carousel slider, list of popular movies in horizontal slider which are fetched from the api.
+  > Clicking on the one of the genre tile will navigate to page that fetch the movie list by genre Id.
+  > Clicking on the trending movie or popular movie will navigate to movie details page.
+  > Clicking on the see more text will navigate to the page that shows all the popular movies available.
+  > Search Icon on Bottom nav will navigate to the page where movie can be searched from the title.
+  > Others pages are static pages.
+
 
 **API Used:** 
  https://www.themoviedb.org/documentation/api
+
+| Default Branch       |  main          |
+| ------------------   | -------------- |
+| Working Branch       |  dev           |
 
 **Tools:**
 
