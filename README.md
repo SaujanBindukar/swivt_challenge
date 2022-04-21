@@ -39,7 +39,7 @@
 
 
 ###### Apk Link:
-[Click here for android apk.](https://drive.google.com/file/d/1QT92j_2eYp_HZOdglVNrJ3GMZJq8LZLM/view?usp=sharing)
+[Click here for android apk.](https://drive.google.com/file/d/1b31D2FBXRG6PGYOSIVws5HVLDIPB0DQk/view?usp=sharing)
 
 **ScreenShots**
 
