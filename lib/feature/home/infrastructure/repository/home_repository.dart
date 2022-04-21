@@ -7,16 +7,22 @@ import 'package:swivt_challenge/feature/home/infrastructure/entities/movies.dart
 import 'package:swivt_challenge/feature/home/infrastructure/repository/local_home_repository.dart';
 
 abstract class IHomeRepository {
+  //get the list of genres (actions, comedy, adventure)
   Future<Either<GenreResponse, Failure>> getGenre();
 
+  /// get the movie by genreId
   Future<Either<MovieResponse, Failure>> getMoviesByGenre({
     required int genreId,
     int? page,
   });
+
+  ///get popular movies
   Future<Either<MovieResponse, Failure>> getPopularMovies({
     int? page,
     bool? fromRemote,
   });
+
+  /// get trending movies of the day
   Future<Either<MovieResponse, Failure>> getTrendingMovies({
     int? page,
   });

@@ -6,6 +6,7 @@ import 'package:swivt_challenge/feature/home/infrastructure/entities/movies.dart
 
 // ignore: one_member_abstracts
 abstract class ISearchRepository {
+  ///searching the movie by its name
   Future<Either<MovieResponse, Failure>> searchMovies({
     required String name,
     int? page,
