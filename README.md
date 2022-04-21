@@ -16,7 +16,9 @@
 | System OS          | Windows / Linux / MacOS                                             |
 | Device             | Android emulator / iOS simulator or physical device ( recommended ) |
 
-  
+**Watch the video here:**
+[![](http://img.youtube.com/vi/ImAXkux8yBM/0.jpg)](http://www.youtube.com/watch?v=ImAXkux8yBM "")
+
 **ScreenShots**
 
 | Dashboard Screen  | Movie By Genre Screen |
