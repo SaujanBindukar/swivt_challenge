@@ -22,7 +22,7 @@ dependencies:
   equatable: ^2.0.3
   shimmer: ^2.0.0
   get_it: ^7.2.0
-  flutter_screenutil: ^5.4.0+1
+  mockito: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -31,7 +31,6 @@ dev_dependencies:
   integration_test:
     sdk: flutter
 
-  flutter_lints: ^1.0.0
   hive_generator: ^1.1.2
   build_runner: ^2.1.10
   freezed: ^1.0.0

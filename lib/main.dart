@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:swivt_challenge/app_setup/bloc_observer.dart';
 import 'package:swivt_challenge/app_setup/dependency_injection.dart';
 import 'package:swivt_challenge/app_setup/hive/hive_setup.dart';
 import 'package:swivt_challenge/feature/dashboard.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  initApp();
+  await initApp();
 
   BlocOverrides.runZoned(
     () {

@@ -7,6 +7,7 @@ import 'package:swivt_challenge/feature/home/applications/movies_bloc/movies_blo
 import 'package:swivt_challenge/feature/home/applications/trending_bloc/trending_bloc.dart';
 import 'package:swivt_challenge/feature/home/presentation/pages/home.dart';
 import 'package:swivt_challenge/feature/search/presentation/page/search.dart';
+import 'package:swivt_challenge/feature/settings/settings.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -34,7 +35,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     HomeScreen(),
     SearchScreen(),
     DownloadScreen(),
-    SearchScreen(),
+    SettingScreen(),
   ];
 
   int currentIndex = 0;

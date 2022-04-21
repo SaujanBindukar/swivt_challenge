@@ -4,6 +4,7 @@ import 'package:swivt_challenge/app_setup/app_endpoints/app_endpoints.dart';
 import 'package:swivt_challenge/core/failure.dart';
 import 'package:swivt_challenge/feature/home/infrastructure/entities/genre.dart';
 import 'package:swivt_challenge/feature/home/infrastructure/entities/movies.dart';
+import 'package:swivt_challenge/feature/home/infrastructure/repository/local_home_repository.dart';
 
 abstract class IHomeRepository {
   Future<Either<GenreResponse, Failure>> getGenre();
@@ -23,8 +24,10 @@ abstract class IHomeRepository {
 class HomeRepository implements IHomeRepository {
   HomeRepository({
     required this.dio,
+    required this.localHomeRepository,
   });
   final Dio dio;
+  final ILocalHomeRepository localHomeRepository;
   @override
   Future<Either<GenreResponse, Failure>> getGenre() async {
     try {
@@ -42,7 +45,9 @@ class HomeRepository implements IHomeRepository {
   }
 
   @override
-  Future<Either<MovieResponse, Failure>> getPopularMovies({int? page}) async {
+  Future<Either<MovieResponse, Failure>> getPopularMovies({
+    int? page,
+  }) async {
     try {
       final query = {
         'page': page ?? 1,
@@ -53,6 +58,7 @@ class HomeRepository implements IHomeRepository {
       );
       final json = Map<String, dynamic>.from(response.data!);
       final result = MovieResponse.fromJson(json);
+
       return Left(result);
     } on DioError catch (e) {
       return Right(e.toFailure);

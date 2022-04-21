@@ -86,6 +86,26 @@ class _TrendingMoviesListState extends State<TrendingMoviesList> {
                                             width: MediaQuery.of(context)
                                                 .size
                                                 .width,
+                                            errorWidget: (context, _, error) {
+                                              return const Icon(
+                                                Icons.error,
+                                                color: Colors.red,
+                                              );
+                                            },
+                                            progressIndicatorBuilder:
+                                                (BuildContext ctx, String image,
+                                                    DownloadProgress progress) {
+                                              return Container(
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                height: 250,
+                                                color: AppColors.primaryColor
+                                                    .withOpacity(
+                                                  progress.progress ?? 1.0,
+                                                ),
+                                              );
+                                            },
                                           ),
                                           Positioned(
                                             bottom: 0,

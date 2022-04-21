@@ -21,9 +21,11 @@ class LocalHomeRepository implements ILocalHomeRepository {
     try {
       final popularMovieHiveBox =
           await Hive.openLazyBox<MovieResponse>(HiveBox.movieResponseBox);
+
       final data = popularMovieHiveBox.isNotEmpty
           ? await popularMovieHiveBox.get('popularMovies')
           : null;
+
       return data;
     } catch (e) {
       return null;
