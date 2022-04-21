@@ -1,15 +1,19 @@
 **App Name:** Swivt Challenege
 
 **Description:**
-  > This is a movie app that gives the informations about trending movies, popular movies, genre and movies by genre.
-  > The app contains five main workable screens.
-  > Dashboard Screen: Contains bottom navigation bar with four screens (two workable).
-  > Home Screen: Contains header(static data), List of Genre, list of trending movies in carousel slider, list of popular movies in horizontal slider which are fetched from the api.
-  > Clicking on the one of the genre tile will navigate to page that fetch the movie list by genre Id.
-  > Clicking on the trending movie or popular movie will navigate to movie details page.
-  > Clicking on the see more text will navigate to the page that shows all the popular movies available.
-  > Search Icon on Bottom nav will navigate to the page where movie can be searched from the title.
-  > Others pages are static pages.
+  > ###### This is a movie app that gives the informations about trending movies, popular movies, genre and movies by genre.
+  > ###### The app contains five main workable screens.
+  > ###### Dashboard Screen: Contains bottom navigation bar with four screens (two workable).
+  > ###### Home Screen: Contains header(static data), List of Genre, list of trending movies in carousel slider, list of popular movies in horizontal slider which are fetched from the api.
+  > ###### Clicking on the one of the genre tile will navigate to page that fetch the movie list by genre Id.
+  > ###### Clicking on the trending movie or popular movie will navigate to movie details page.
+  > ###### Clicking on the see more text will navigate to the page that shows all the popular movies available.
+  >  ###### Search Icon on Bottom nav will navigate to the page where movie can be searched from the title.
+  > ###### Others pages are static pages.
+  > ###### Local database is added to all popular movies only in all_movies.dart page.
+  > ###### Pagination is added to all popular movies only in all_movies.dart page.
+  > ###### Unit test is done for getting the genre list from API.
+  > ###### Widget Testing and Integration testing are incomplete.
 
 
 **API Used:** 
@@ -96,6 +100,7 @@
   - Start your device i.e `Android Emulator` or `iOS Simulator` or `Physical Device`.
   - Open terminal and run `flutter test` command to run the test case.
   - Open terminal and run `flutter run` command to build your project.
+
 
 
 
