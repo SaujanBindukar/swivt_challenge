@@ -15,6 +15,7 @@ abstract class IHomeRepository {
   });
   Future<Either<MovieResponse, Failure>> getPopularMovies({
     int? page,
+    bool? fromRemote,
   });
   Future<Either<MovieResponse, Failure>> getTrendingMovies({
     int? page,
@@ -47,19 +48,35 @@ class HomeRepository implements IHomeRepository {
   @override
   Future<Either<MovieResponse, Failure>> getPopularMovies({
     int? page,
+    bool? fromRemote,
   }) async {
     try {
       final query = {
         'page': page ?? 1,
       };
-      final response = await dio.get<Map<String, dynamic>>(
-        MoviesEp.getPopularMovies,
-        queryParameters: query,
-      );
-      final json = Map<String, dynamic>.from(response.data!);
-      final result = MovieResponse.fromJson(json);
-
-      return Left(result);
+      if (fromRemote!) {
+        final response = await dio.get<Map<String, dynamic>>(
+          MoviesEp.getPopularMovies,
+          queryParameters: query,
+        );
+        final json = Map<String, dynamic>.from(response.data!);
+        final result = MovieResponse.fromJson(json);
+        return Left(result);
+      } else {
+        final localDataResponse =
+            await localHomeRepository.getPopularMoviesFromLocal();
+        if (localDataResponse != null) {
+          return Left(localDataResponse);
+        } else {
+          final response = await dio.get<Map<String, dynamic>>(
+            MoviesEp.getPopularMovies,
+            queryParameters: query,
+          );
+          final json = Map<String, dynamic>.from(response.data!);
+          final result = MovieResponse.fromJson(json);
+          return Left(result);
+        }
+      }
     } on DioError catch (e) {
       return Right(e.toFailure);
     } catch (e) {
@@ -90,7 +107,9 @@ class HomeRepository implements IHomeRepository {
   }
 
   @override
-  Future<Either<MovieResponse, Failure>> getTrendingMovies({int? page}) async {
+  Future<Either<MovieResponse, Failure>> getTrendingMovies({
+    int? page,
+  }) async {
     try {
       final query = {
         'page': page ?? 1,

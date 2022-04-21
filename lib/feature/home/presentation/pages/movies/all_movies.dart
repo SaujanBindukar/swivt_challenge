@@ -59,6 +59,7 @@ class _AllMoviesScreenState extends State<AllMoviesScreen> {
                         GetPopularMovies(
                           page: state.movieResponse.page + 1,
                           oldMovieResponse: state.movieResponse,
+                          fromRemote: true,
                         ),
                       );
                       Future.delayed(const Duration(seconds: 2),
@@ -66,7 +67,10 @@ class _AllMoviesScreenState extends State<AllMoviesScreen> {
                     },
                     onRefresh: () {
                       inject<MoviesBloc>().add(
-                        const GetPopularMovies(page: 1),
+                        const GetPopularMovies(
+                          page: 1,
+                          fromRemote: true,
+                        ),
                       );
                       Future.delayed(const Duration(seconds: 2),
                           _refreshController.refreshCompleted);

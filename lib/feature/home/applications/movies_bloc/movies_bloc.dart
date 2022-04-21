@@ -17,16 +17,13 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
         if (event.page == null || event.page == 1) {
           emit(MoviesLoading());
         }
-        final localDataResponse =
-            await localHomeRepository.getPopularMoviesFromLocal();
-        if (localDataResponse != null) {
-          emit(MoviesLoaded(
-            movieResponse: localDataResponse,
-          ));
-        } else {
-          final response =
-              await homeRepository.getPopularMovies(page: event.page);
-          response.fold((moviesReponse) async {
+
+        final response = await homeRepository.getPopularMovies(
+          page: event.page,
+          fromRemote: event.fromRemote ?? true,
+        );
+        response.fold(
+          (moviesReponse) async {
             final oldData = event.oldMovieResponse?.results ?? [];
             final newMoviesList = moviesReponse.results;
             final newData = oldData + newMoviesList;
@@ -43,10 +40,11 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
             await localHomeRepository.cachePopularMovies(
               movieResponse: movieData,
             );
-          }, (failure) {
+          },
+          (failure) {
             emit(MoviesError(message: failure.reason));
-          });
-        }
+          },
+        );
       },
     );
     on<GetMoviesById>(

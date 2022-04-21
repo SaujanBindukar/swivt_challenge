@@ -51,9 +51,10 @@ class MockIHomeRepository extends _i1.Mock implements _i3.IHomeRepository {
           .Future<_i2.Either<_i7.MovieResponse, _i6.Failure>>);
   @override
   _i4.Future<_i2.Either<_i7.MovieResponse, _i6.Failure>> getPopularMovies(
-          {int? page}) =>
+          {int? page, bool? fromRemote}) =>
       (super.noSuchMethod(
-          Invocation.method(#getPopularMovies, [], {#page: page}),
+          Invocation.method(
+              #getPopularMovies, [], {#page: page, #fromRemote: fromRemote}),
           returnValue: Future<_i2.Either<_i7.MovieResponse, _i6.Failure>>.value(
               _FakeEither_0<_i7.MovieResponse, _i6.Failure>())) as _i4
           .Future<_i2.Either<_i7.MovieResponse, _i6.Failure>>);
