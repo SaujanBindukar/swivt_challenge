@@ -16,8 +16,13 @@
 | System OS          | Windows / Linux / MacOS                                             |
 | Device             | Android emulator / iOS simulator or physical device ( recommended ) |
 
-**Watch the video here:**
+###### Watch the video here:
+
 [![](http://img.youtube.com/vi/ImAXkux8yBM/0.jpg)](http://www.youtube.com/watch?v=ImAXkux8yBM "")
+
+
+###### Apk Link:
+[Click here for android apk.](https://drive.google.com/file/d/1QT92j_2eYp_HZOdglVNrJ3GMZJq8LZLM/view?usp=sharing)
 
 **ScreenShots**
 
